@@ -1,0 +1,52 @@
+*{
+
+	margin: 0; padding: 0;
+	text-decoration: none;
+	list-style-type: none;
+}
+a:link,a:visited{
+	color:brown;
+	font-size: 10pt;
+}
+a:active,a:hover{
+	color: red;
+}
+.all{
+	width: 520px; height: 300px;
+	margin: 100px auto;
+	padding: 40px 0px 40px 130px;
+	background-color: #E0F2FF;
+	border-radius: 10px;
+	position: relative;
+}
+h2{
+	text-align: center;
+}
+input{
+
+}
+.button_login{
+	width: 250px;
+	height: 45px;
+	font-size: 14pt;
+	color: papayawhip;
+	border: 0px;
+	text-align: center;
+	background-color:#3B78DD;
+	border-radius: 5px;
+	position: absolute;
+	left: 200px; bottom: 80px;
+}
+.td_fill{
+	/*text-align: left;*/
+}
+.fill{
+	width: 250px; height:35px ;
+	font-size: 11pt;
+	padding-left: 3px;
+}
+td{
+	text-align: right;
+	width: 70px; height: 50px;
+	font-size: 14pt; padding: 0px 10px;
+}
