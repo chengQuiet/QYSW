@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="__CDN__/jquery/1.12.4/jquery.min.js" type="text/javascript"></script>
+    <title>我的书架</title>
+    <style>
+        *{
+            margin: 30px auto;
+            margin: 0; padding: 0;
+            text-decoration: none;
+            list-style-type: none;
+        }
+        .all{
+            width: 1200px;
+            height: 2000px;
+            margin: 0px auto;
+            border: solid 1px #000000;
+            background-color: #E9FAFF;
+        }
+        .content{
+            width:1200px;
+            height: 250px;
+        }
+        .content li{
+            width: 550px;
+            height: 230px;
+            display: inline-block;
+            padding: 10px 10px 0px 10px ;
+            margin: 10px 10px 0px 10px;
+            position: relative;
+        }
+        .content dt img{
+            width: 130px;
+            height: 200px;
+            padding: 10px 10px 0px 10px;
+            float: left;
+        }
+        .content dd{
+            width: 370px;
+            float: left;
+            padding-top: 10px;
+        }
+        span{
+            text-align: right;
+            color: #aaa;
+        }
+        p{
+            text-indent: 6pt;
+            font-size: 12pt;
+        }
+        .content li button{
+            width: 100px; height: 40px;
+            border: 2px solid #8a6d3b;
+            line-height: 40px;
+            font-weight: bold;
+            color: #aaa;
+            font-size: 15pt;
+            position: absolute;
+            border-radius: 15px;
+            background-color: #eee;
+        }
+        .left_div{
+            width: 100px; height: 40px;
+            border: 2px solid #8a6d3b;
+            line-height: 40px;
+            font-weight: bold;
+            color: #aaa;
+            font-size: 15pt;
+            position: absolute;
+            border-radius: 15px;
+            background-color: #eee;
+            text-align: center;
+            left: 180px;
+            bottom: 20px;
+        }
+        .right_div{
+            right: 80px;
+            bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="all">
+    <div class="content">
+        <ul>
+            <?php foreach ($books as $v){ ?>
+            <li>
+                <dl>
+                    <dt><a href="get_detail?name={$v['name']}"><img src="{$v['pic']}"></a></dt>
+                    <dd>
+                        <h4><a href="get_detail?name={$v['name']}">{$v['name']}</a></h4><span><h5>{$v['editor']}&nbsp;&nbsp;著</h5></span>
+                        <hr>
+                        <p>{$v['detail']}</p>
+                        <hr>
+                        <div>
+                            <a href="get_detail?name={$v['name']}"><div id="left_button" class="left_div">开始阅读</div></a>
+                            <button id="{$v['name']}+{$v['id']}" class="right_div" value="{$v['name']}">移出书架</button>
+                        </div>
+
+                    </dd>
+                </dl>
+            </li>
+            <?php } ?>
+        </ul>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("button").click(function () {
+            var name;
+            // $(this).attr('id');
+            name=$(this).attr('value');
+            $.post('hate',{'name':name},function (data) {
+                // console.log(data);
+                if(data){
+                    window.location.reload();
+                    console.log('yes');
+                }
+            });
+        });
+    });
+
+
+    // var name;
+    // name=$('#right_div').val();
+    // $("#").click(function () {
+    //     $.post('hate',{'name':name},function (data) {
+    //         console.log(data);
+    //         if(data){
+    //
+    //             console.log('yes');
+    //         }
+    //     })
+    // });
+    // $('#jump').click(function (e) {
+    //     e = e || window.event;
+    //     e.preventDefault ? e.preventDefault() : e.returnValue = false;
+    //     console.log(name);
+    //     $.post('hate',{'name':name},function (data) {
+    //         console.log(data);
+    //         if(data){
+    //
+    //             console.log('yes');
+    //         }
+    //     })
+    // });
+    // $('#right_button').click(function () {
+    //     $.post('hate',{'name':name},function (data) {
+    //         console.log(data);
+    //         if(data){
+    //
+    //             console.log('yes');
+    //         }
+    //     })
+    // });
+</script>
+</body>
+</html>

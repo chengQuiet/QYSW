@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="__CDN__/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="__CDN__/toastr.js/2.1.4/toastr.min.css">
+    <link rel="stylesheet" href="__STATIC__/css/main.css?{if $Think.env.app_debug}_={:time()}{else /}v={$Think.config.tpadmin.version}{/if}">
+    <script src="__CDN__/jquery/1.12.4/jquery.min.js"></script>
+    <script src="__CDN__/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="__CDN__/toastr.js/2.1.4/toastr.min.js"></script>
+    <script src="__STATIC__/js/main.js?{if $Think.env.app_debug}_={:time()}{else /}v={$Think.config.admin.version}{/if}"></script>
+    <title>注册</title>
+</head>
+<body class="login">
+<div class="container">
+    <form method="post" class="j-login">
+        <h1>后台管理系统</h1>
+        <div class="form-group">
+            <input type="text" name="username" class="form-control" placeholder="用户名" required>
+        </div>
+        <div class="form-group">
+            <input type="password" name="password" class="form-control" placeholder="密码" required>
+        </div>
+        <div class="form-group">
+            <input type="text" name="captcha" class="form-control" placeholder="验证码" required>
+        </div>
+        <div class="form-group">
+            <div class="login-captcha"><img src="{:captcha_src()}" alt="captcha"></div>
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-lg btn-success" value="注册">
+        </div>
+    </form>
+    <div class="main-loading" style="display:none">
+        <div class="dot-carousel"></div>
+    </div>
+</div>
+<script>
+    main.init({token:'{token}'});
+    $('.login-captcha img').click(function () {
+        $(this).attr('src', '{:captcha_src()}' + '?_=' + Math.random());
+    });
+    main.ajaxForm('.j-login', function() {
+        location.href = "{:url('Index/login')}";
+    }, function() {
+        $('.login-captcha img').click();
+    });
+</script>
+</body>
+</html>

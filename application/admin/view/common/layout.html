@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="__CDN__/twitter-bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="__CDN__/font-awesome-4.2.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="__CDN__/toastr.js/2.1.4/toastr.min.css">
+  <link rel="stylesheet" href="__STATIC__/css/main.css">
+  <script src="__CDN__/jquery/1.12.4/jquery.min.js"></script>
+  <script src="__CDN__/twitter-bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="__CDN__/toastr.js/2.1.4/toastr.min.js"></script>
+  <script src="__STATIC__/js/main.js"></script>
+  <title>趣阅书屋后台管理</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-default navbar-static-top main-nav" role="navigation">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="navbar-brand">趣阅书屋后台管理</div>
+    </div>
+    <div class="collapse navbar-collapse">
+      <div class="main-sidebar">
+        <ul class="nav main-menu">
+          <li>
+            <a href="{:url('admin/Index/index')}" class="active">
+              <i class="fa fa-home fa-fw"></i>首页
+            </a>
+          </li>
+          <li>
+            <a href="{:url('Index/books')}" class="active">
+              <i class="fa fa-book fa-fw"></i>书籍管理
+            </a>
+          </li>
+          <li>
+            <a href="{:url('Index/admins')}" class="active">
+              <i class="fa fa-user-md fa-fw"></i>后台用户
+            </a>
+          </li>
+          <li>
+            <a href="{:url('Index/commons')}" class="active">
+              <i class="fa fa-user fa-fw"></i>会员用户
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- 将用户名和退出按钮链接放在大屏幕的顶部右侧-->
+      <ul class="nav navbar-right ">
+        <li>
+          <!--a href="#"><i class="fa fa-user fa-fw"></i>admin</a-->
+          <a href="{:url('Index/password')}" class="j-layout-pwd"><i class="fa fa-user fa-fw"></i>{$layout_login_user.username}</a>
+        </li>
+        <li><a href="{:url('Index/logout')}"><i class="fa fa-power-off fa-fw"></i>退出</a></li>
+      </ul>
+    </div>
+  </nav>
+  <div class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal" 
+           aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <div class="j-modal-content"></div>
+          <div class="main-loading" style="display:none">
+            <div class="dot-carousel"></div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary j-modal-submit">确定</button>
+          <button type="button" class="btn btn-default j-modal-cancel" 
+           data-dismiss="modal">取消</button>
+        </div>
+      </div>
+    </div>
+  </div>  
+  <script>main.init();</script>
+  <div class="main-container">
+    <div class="main-content">{__CONTENT__}</div>
+    <div class="main-loading" style="display:none">
+      <div class="dot-carousel"></div>
+    </div>
+  </div>
+  <script>main.layout();</script>
+</body>
+
+</html>

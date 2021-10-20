@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="__STATIC__/css/show.css" type="text/css" rel="stylesheet" />
+    <base target=“_blank”>
+    <title>Title</title>
+</head>
+<body>
+<div class="all">
+    <div class="content">
+        <ul>
+            <?php foreach ($books as $v){ ?>
+            <li>
+                <dl>
+                    <dt><a href=""><img src="{$v['pic']}"></a></dt>
+                    <dd>
+                        <h4><a href="">{$v['name']}</a></h4><span><h5>{$v['editor']}</h5></span>
+                        <hr>
+                        <p>{$v['detail']}</p>
+                    </dd>
+                </dl>
+            </li>
+            <?php } ?>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

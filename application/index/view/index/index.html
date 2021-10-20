@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>趣阅书屋</title>
+		<script type="text/javascript" src="__CDN__/myfocus/myfocus-2.0.4.min.js"></script><!--引入myFocus库-->
+		<link href="__STATIC__/css/novel.css" type="text/css" rel="stylesheet" />
+		<script src="__CDN__/jquery/1.12.4/jquery.min.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<div class="all">
+			{include file="common/header"}
+			<div class="neck">
+				<div class="neck_left">
+					<div class="left_gif">
+						<img src="__CDN__/images/read.gif">
+					</div>
+					<div class="left_txt">
+						<p>读书无疑者，须教有疑，有疑者，却要无疑，到这里方是长进。 ——朱熹</p>
+					</div>
+				</div>
+				<div class="neck_right">
+					<div id="boxID" class="box"><!--焦点图盒子-->
+						<div class="loading"><img src="img/loading.gif" alt="请稍候..." /></div><!--载入画面(可删除)-->
+						<div class="pic"><!--内容列表(li数目可随意增减)-->
+							<ul>
+								<li><a href="/"><img src="__CDN__/images/1.jpg" thumb="" alt="" text="详细描述1" /></a></li>
+								<li><a href="#"><img src="__CDN__/images/2.jpg" thumb="" alt="" text="详细描述2" /></a></li>
+								<li><a href="#"><img src="__CDN__/images/3.jpg" thumb="" alt="" text="详细描述3" /></a></li>
+								<li><a href="#"><img src="__CDN__/images/4.jpg" thumb="" alt="" text="详细描述4" /></a></li>
+								<li><a href="#"><img src="__CDN__/images/5.jpg" thumb="" alt="" text="详细描述5" /></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="content">
+				<ul>
+					<?php foreach ($books as $v){ ?>
+					<li>
+						<a href="get_detail?name={$v['name']}" target="_blank"><dl>
+							<dt><img src="{$v['pic']}"></dt>
+							<dd>
+								<h4>{$v['name']}</h4><span><h5>{$v['editor']}&nbsp;&nbsp;著</h5></span>
+								<hr>
+								<p>{$v['detail']}</p>
+							</dd>
+						</dl></a>
+					</li>
+					<?php } ?>
+				</ul>
+			</div>
+			<hr style="border: 1px solid #e4b9c0">
+			<div class="bottom">
+				<p>
+					友情连接：新趣味书屋 全职法师 妖魔战神 帝霸 原始战记 御天神帝 斗罗大陆3龙王传说 免费小说 八哥电影网
+					高清视频会议系统 翡翠 防伪查询 星辰美文网 高清视频会议系统 翡翠 防伪查询美剧天堂 股票配资
+					就爱看书网 传奇万能登陆器 爱奇闻 防伪标签制作 视频剪辑 系统 电脑技术 神马电影网
+				</p>
+			</div>
+			<hr style="border: 2px solid #e4b9c0">
+			<div class="footer">
+				<ul>
+
+					<li>本站所有小说为转载作品，所有章节均由网友上传，转载至本站只是为了宣传本书让更多读者欣赏。</li>
+					<li>Copyright © 2015-2022 新趣阅书屋 All Rights Reserved</li>
+					<li>沪ICP备14048333号</li>
+				</ul>
+			</div>
+		</div>
+		<script type="text/javascript">
+			$(function () {
+			    $.post('mine',{},function (data) {
+					if (data){
+					    // console.log(data);
+                        $('#mine').html('<a href="password">'+data+'</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="logout">退出</a>');
+					}
+                });
+			    $('#mine').html('<a href="logon">注册</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="login.html">登录</a>');
+            });
+            myFocus.set({
+                id:'boxID',//焦点图盒子ID
+                pattern:'mF_fancy',//风格应用的名称
+                time:2,//切换时间间隔(秒)
+                trigger:'click',//触发切换模式:'click'(点击)/'mouseover'(悬停)
+                width:780,//设置图片区域宽度(像素)
+                height:270,//设置图片区域高度(像素)
+                txtHeight:'default',//文字层高度设置(像素),'default'为默认高度，0为隐藏
+                direction:'left',
+                // easing String Default:'easeOut',
+            });
+		</script>
+	</body>
+</html>
+

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="__STATIC__/css/ranking.css" type="text/css" rel="stylesheet" />
+    <base target="_blank">
+    <title>小说排行</title>
+</head>
+<body>
+<div class="all">
+    {include file="common/header"}
+    <div class="content">
+        <ul>
+            <?php foreach ($books as $v){ ?>
+            <li>
+                <h3>NO.{$v['tag']}</h3>
+                <dl>
+                    <dt><a href="get_detail?name={$v['name']}"><img src="{$v['pic']}"></a></dt>
+                    <dd>
+                        <h4><a href="get_detail?name={$v['name']}">{$v['name']}</a></h4><span><h5>作者：{$v['editor']}</h5></span>
+                        <hr>
+                        <p>{$v['detail']}</p>
+                    </dd>
+                </dl>
+            </li>
+            <?php } ?>
+        </ul>
+    </div>
+</div>
+</body>
+</html>

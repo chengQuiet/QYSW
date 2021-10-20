@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="__STATIC__/css/show.css" type="text/css" rel="stylesheet" />
+    <title>书籍列表</title>
+</head>
+<body>
+<div class="all">
+    {include file="common/header"}
+    <div class="content">
+        <ul>
+            <?php foreach ($books as $v){ ?>
+            <li>
+                <dl>
+                    <dt><a href="get_detail?name={$v['name']}"><img src="{$v['pic']}"></a></dt>
+                    <dd>
+                        <h4><a href="get_detail?name={$v['name']}">{$v['name']}</a></h4><span><h5>{$v['editor']}</h5></span>
+                        <hr>
+                        <p>{$v['detail']}</p>
+                    </dd>
+                </dl>
+            </li>
+            <?php } ?>
+        </ul>
+    </div>
+</div>
+<script>
+    $(function () {
+        $.post('mine',{},function (data) {
+            if (data){
+                // console.log(data);
+                $('#mine').html('<a href="password">'+data+'</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="logout">退出</a>');
+            }
+        });
+        $('#mine').html('<a href="logon">注册</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="login.html">登录</a>');
+    });
+</script>
+</body>
+</html>

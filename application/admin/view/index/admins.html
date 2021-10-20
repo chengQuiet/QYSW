@@ -1,0 +1,57 @@
+<div>
+  <div class="main-title">
+    <h2>后台用户</h2>
+  </div>
+  <div class="main-section">
+    <form method="post" action="{:url('sort')}" class="j-form">
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>姓名</th>
+            <th>密码</th>
+            <th>salt</th>
+            <th>添加时间</th>
+            <th>更新时间</th>
+          </tr>
+        </thead>
+        <tbody>
+          {foreach $data as $v}
+          <tr>
+            <td>{$v.id}</td>
+            <td>{$v.username}</td>
+            <td>{$v.password}</td>
+            <td>{$v.salt}</td>
+            <td>{$v.create_time}</td>
+            <td>{$v.update_time}</td>
+            <td>
+              <a href="{:url('delete_admins',['id'=>$v.id])}" class="j-del text-danger">删除</a>
+            </td>
+          </tr>
+          {/foreach}
+          {if empty($data)}
+          <tr>
+            <td colspan="5" class="text-center">还没有添加项目</td>
+          </tr>
+          {/if}
+        </tbody>
+      </table>
+    </form>
+  </div>
+</div>
+<script>
+  main.ajaxForm('.j-form', function () {
+    main.contentRefresh();
+  });
+  $('.j-sort').change(function () {
+    $(this).attr('name', $(this).attr('data-name'));
+  });
+  $('.j-del').click(function () {
+    if (confirm('您确定要删除此项？')) {
+      main.ajaxPost($(this).attr('href'), function () {
+        main.contentRefresh();
+      });
+    }
+    return false;
+  });
+</script>

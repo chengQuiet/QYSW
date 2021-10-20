@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>书籍目录</title>
+    <style>
+        *{
+            margin: 0; padding: 0;
+            text-decoration: none;
+            list-style-type: none;
+        }
+        .chapterList{
+            width: 900px;
+            margin: 0px auto;
+        }
+        .chapterList li{
+            display: inline-block;
+            width: 280px;
+            height: 40px;
+            background-color: #D2B48C;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="chapterList">
+            <ul>
+                {foreach $list as $key=>$v}
+                <li><a href="get_detail?name={$name}&page={$key}">{$v}</a></li>
+                {/foreach}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
